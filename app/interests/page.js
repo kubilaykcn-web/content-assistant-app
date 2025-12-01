@@ -1,60 +1,47 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function InterestsPage() {
-  const router = useRouter();
-
-  const interestsList = [
-    "Eğitici",
-    "Eğlendirci",
-    "Müzik",
-    "Masal",
-  ];
-
   const [selected, setSelected] = useState([]);
+  const interests = ["Eğitici", "Eğlendirici", "Müzik", "Masal"];
 
-  const toggleInterest = (interest) => {
+  const toggleSelect = (item) => {
     setSelected((prev) =>
-      prev.includes(interest)
-        ? prev.filter((i) => i !== interest)
-        : [...prev, interest]
+      prev.includes(item)
+        ? prev.filter((i) => i !== item)
+        : [...prev, item]
     );
-  };
-
-  const handleNext = () => {
-    console.log("Selected interests:", selected);
-    router.push("/summary"); // sıradaki sayfa
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] p-6">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-md p-6 text-center">
         
-        {/* Görsel */}
+        {/* Üst Görsel */}
         <div className="flex justify-center mb-6">
           <Image
             src="/kids-illustration.png"
-            width={110}
-            height={110}
-            alt="interests"
+            width={130}
+            height={130}
+            alt="child"
             className="rounded-full"
           />
         </div>
 
+        {/* Başlık */}
         <h1 className="text-2xl font-semibold mb-4 leading-tight">
-          Çocuğunuza hangi konuda <br />içerikler izletmek istersiniz?
+          Çocuğunuzun<br />ilgi alanları neler?
         </h1>
 
-        {/* İlgi alanı seçenekleri */}
-        <div className="grid grid-cols-2 gap-3 my-6">
-          {interestsList.map((item) => (
+        {/* İlgi alanları butonları */}
+        <div className="grid grid-cols-2 gap-4 my-6">
+          {interests.map((item) => (
             <button
               key={item}
-              onClick={() => toggleInterest(item)}
-              className={`py-3 rounded-xl border text-lg transition ${
+              onClick={() => toggleSelect(item)}
+              className={`py-4 rounded-xl border text-lg transition ${
                 selected.includes(item)
                   ? "bg-orange-200 border-orange-400"
                   : "bg-gray-100 border-gray-300"
@@ -68,15 +55,16 @@ export default function InterestsPage() {
         {/* Devam Et */}
         <button
           disabled={selected.length === 0}
-          onClick={handleNext}
           className={`w-full py-4 rounded-2xl text-lg font-medium transition ${
             selected.length > 0
-              ? "bg-orange-300 text-black"
+              ? "bg-orange-200 text-black"
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
+          onClick={() => console.log("Selected interests:", selected)}
         >
-          Devam Et
+          Devam et
         </button>
+
       </div>
     </div>
   );
