@@ -1,43 +1,75 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-
 export default function AgePage() {
-  const [selected, setSelected] = useState(null);
-
-  const ageRanges = ["0-3", "3-5", "5-8", "8-10"];
+  const ageRanges = ["0–3", "3–5", "5–8", "8–10"];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] p-6">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-md p-6 text-center">
-        
-        {/* Çocuk görseli */}
-        <div className="flex justify-center mb-6">
-          <Image
-            src="/kids-illustration.png"
-            width={130}
-            height={130}
-            alt="child"
-            className="rounded-full"
-          />
-        </div>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "20px",
+        backgroundColor: "#FAF9F6",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "420px",
+          width: "100%",
+          backgroundColor: "white",
+          padding: "30px",
+          borderRadius: "24px",
+          textAlign: "center",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+        }}
+      >
+        {/* Görsel */}
+        <img
+          src="/kids-illustration.png"
+          alt="child"
+          style={{
+            width: "140px",
+            marginBottom: "25px",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        />
 
-        <h1 className="text-2xl font-semibold mb-4 leading-tight">
+        <h1
+          style={{
+            fontSize: "28px",
+            fontWeight: "700",
+            marginBottom: "25px",
+            lineHeight: "1.3",
+          }}
+        >
           Çocuğunuz<br />kaç yaşında
         </h1>
 
-        {/* Yaş aralığı butonları */}
-        <div className="grid grid-cols-2 gap-4 my-6">
+        {/* Yaş seçenekleri */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "15px",
+            marginBottom: "40px",
+          }}
+        >
           {ageRanges.map((age) => (
             <button
               key={age}
-              onClick={() => setSelected(age)}
-              className={`py-4 rounded-xl border text-lg transition ${
-                selected === age
-                  ? "bg-orange-200 border-orange-400"
-                  : "bg-gray-100 border-gray-300"
-              }`}
+              style={{
+                padding: "18px",
+                borderRadius: "16px",
+                backgroundColor: "#F5F5F5",
+                border: "none",
+                fontSize: "18px",
+                cursor: "pointer",
+              }}
             >
               {age}
             </button>
@@ -45,16 +77,17 @@ export default function AgePage() {
         </div>
 
         {/* Devam Et */}
+
         <button
-          disabled={!selected}
-          className={`w-full py-4 rounded-2xl text-lg font-medium transition ${
-            selected
-              ? "bg-orange-200 text-black"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
-          onClick={() => {
-            // Şimdilik sadece console.log yapalım
-            console.log("Selected age:", selected);
+          style={{
+            width: "100%",
+            padding: "18px",
+            backgroundColor: "#FCE9D9",
+            borderRadius: "18px",
+            border: "none",
+            fontSize: "18px",
+            fontWeight: "600",
+            cursor: "pointer",
           }}
         >
           Devam et
