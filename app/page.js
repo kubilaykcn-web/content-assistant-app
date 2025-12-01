@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div
@@ -28,29 +30,47 @@ export default function Home() {
           style={{ width: "100%", marginBottom: "20px" }}
         />
 
-        <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "12px" }}>
-          İçerik Asistanına<br />Hoş Geldin
+        <h1
+          style={{
+            fontSize: "24px",
+            fontWeight: "700",
+            marginBottom: "12px",
+            lineHeight: "1.3",
+          }}
+        >
+          İçerik Asistanına
+          <br />
+          Hoş Geldin
         </h1>
 
-        <p style={{ color: "#555", fontSize: "15px", marginBottom: "30px" }}>
-          Amacımız çocukların güvenli içerikle ulaşmasını kolaylaştırarak sağlıklı
-          büyümelerini sağlamak.
+        <p
+          style={{
+            color: "#555",
+            fontSize: "15px",
+            marginBottom: "30px",
+          }}
+        >
+          Amacımız çocukların güvenli içerikle ulaşmasını kolaylaştırarak
+          sağlıklı büyümelerini sağlamak.
         </p>
 
-        <button
+        {/* Başla Butonu */}
+        <Link
+          href="/age"
           style={{
+            display: "block",
             width: "100%",
             padding: "14px",
             backgroundColor: "#F6E7DA",
             borderRadius: "14px",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "18px",
+            textDecoration: "none",
+            color: "black",
             fontWeight: "600",
+            fontSize: "18px",
           }}
         >
           Başla
-        </button>
+        </Link>
       </div>
     </div>
   );
