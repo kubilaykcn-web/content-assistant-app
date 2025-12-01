@@ -54,7 +54,7 @@ export default function Home() {
           sağlıklı büyümelerini sağlamak.
         </p>
 
-        {/* Başla Butonu */}
+        {/* Başla butonu */}
         <Link
           href="/age"
           style={{
