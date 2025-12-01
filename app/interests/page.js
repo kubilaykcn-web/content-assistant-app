@@ -1,10 +1,9 @@
 "use client";
-
 import { useState } from "react";
 
 export default function InterestsPage() {
   const [selected, setSelected] = useState([]);
-  const interests = ["Eğitici", "Eğlendirici", "Müzik", "Masal"];
+  const interests = ["Eğitici", "Eğlendirici"];
 
   const toggleSelect = (item) => {
     setSelected((prev) =>
@@ -23,7 +22,7 @@ export default function InterestsPage() {
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        backgroundColor: "#FAF7F2",
+        backgroundColor: "#FAF9F6",
       }}
     >
       <div
@@ -37,27 +36,24 @@ export default function InterestsPage() {
           boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
         }}
       >
-        {/* Görsel */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-          <img
-            src="/kids-illustration.png"
-            alt="child"
-            style={{ width: "120px", borderRadius: "100px" }}
-          />
-        </div>
-
-        {/* Başlık */}
-        <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "20px" }}>
-          Çocuğunuzun<br />ilgi alanları neler?
+        <h1
+          style={{
+            fontSize: "26px",
+            fontWeight: "700",
+            marginBottom: "40px",
+            lineHeight: "34px",
+          }}
+        >
+          Çocuğunuza ne tarz<br /> içerikler izletmek<br /> istiyorsunuz?
         </h1>
 
         {/* İlgi alanı butonları */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "12px",
-            marginBottom: "30px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            marginBottom: "60px",
           }}
         >
           {interests.map((item) => (
@@ -65,10 +61,10 @@ export default function InterestsPage() {
               key={item}
               onClick={() => toggleSelect(item)}
               style={{
-                padding: "14px",
-                borderRadius: "12px",
-                border: selected.includes(item) ? "2px solid #F6A800" : "1px solid #DDD",
-                backgroundColor: selected.includes(item) ? "#F6E7DA" : "#F5F5F5",
+                padding: "16px",
+                borderRadius: "14px",
+                border: "2px solid #E5E5E5",
+                backgroundColor: selected.includes(item) ? "#F6E7DA" : "white",
                 fontSize: "18px",
                 cursor: "pointer",
               }}
@@ -78,6 +74,22 @@ export default function InterestsPage() {
           ))}
         </div>
 
-        {/* Devam Et */}
+        {/* Devam butonu */}
         <button
-          disabled={selected.length ===
+          disabled={selected.length === 0}
+          style={{
+            width: "100%",
+            padding: "16px",
+            borderRadius: "14px",
+            border: "2px solid #E5E5E5",
+            backgroundColor: selected.length > 0 ? "#F6E7DA" : "white",
+            fontSize: "18px",
+            cursor: selected.length > 0 ? "pointer" : "not-allowed",
+          }}
+        >
+          Devam et
+        </button>
+      </div>
+    </div>
+  );
+}
