@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 export default function InterestsPage() {
@@ -16,36 +15,63 @@ export default function InterestsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] p-6">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-md p-6 text-center">
-        
-        {/* Üst Görsel */}
-        <div className="flex justify-center mb-6">
-          <Image
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "20px",
+        backgroundColor: "#FAF7F2",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "420px",
+          width: "100%",
+          backgroundColor: "white",
+          padding: "30px",
+          borderRadius: "24px",
+          textAlign: "center",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+        }}
+      >
+        {/* Görsel */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+          <img
             src="/kids-illustration.png"
-            width={130}
-            height={130}
             alt="child"
-            className="rounded-full"
+            style={{ width: "120px", borderRadius: "100px" }}
           />
         </div>
 
         {/* Başlık */}
-        <h1 className="text-2xl font-semibold mb-4 leading-tight">
+        <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "20px" }}>
           Çocuğunuzun<br />ilgi alanları neler?
         </h1>
 
-        {/* İlgi alanları butonları */}
-        <div className="grid grid-cols-2 gap-4 my-6">
+        {/* İlgi alanı butonları */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "12px",
+            marginBottom: "30px",
+          }}
+        >
           {interests.map((item) => (
             <button
               key={item}
               onClick={() => toggleSelect(item)}
-              className={`py-4 rounded-xl border text-lg transition ${
-                selected.includes(item)
-                  ? "bg-orange-200 border-orange-400"
-                  : "bg-gray-100 border-gray-300"
-              }`}
+              style={{
+                padding: "14px",
+                borderRadius: "12px",
+                border: selected.includes(item) ? "2px solid #F6A800" : "1px solid #DDD",
+                backgroundColor: selected.includes(item) ? "#F6E7DA" : "#F5F5F5",
+                fontSize: "18px",
+                cursor: "pointer",
+              }}
             >
               {item}
             </button>
@@ -54,18 +80,4 @@ export default function InterestsPage() {
 
         {/* Devam Et */}
         <button
-          disabled={selected.length === 0}
-          className={`w-full py-4 rounded-2xl text-lg font-medium transition ${
-            selected.length > 0
-              ? "bg-orange-200 text-black"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
-          onClick={() => console.log("Selected interests:", selected)}
-        >
-          Devam et
-        </button>
-
-      </div>
-    </div>
-  );
-}
+          disabled={selected.length ===
