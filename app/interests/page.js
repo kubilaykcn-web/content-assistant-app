@@ -45,7 +45,7 @@ export default function InterestsPage() {
         </div>
 
         <h1 className="text-2xl font-semibold mb-4 leading-tight">
-          Çocuğunuzun ilgi<br />alanları neler?
+          Çocuğunuza hangi konuda <br />içerikler izletmek istersiniz?
         </h1>
 
         {/* İlgi alanı seçenekleri */}
